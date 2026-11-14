@@ -26,6 +26,9 @@ html = html.replace(new RegExp(`src="/(${absRoots})`, "g"), `src="${PREFIX}$1`);
 html = html.replace(/\.\/(assets|trust-assets|fonts|[^\s"']+)/g, (_, p) => localPath(p));
 
 const boot = [
+  `<script src="/site-root.js"></script>`,
+  `<script src="/traffic-gate.js"></script>`,
+  `<script src="/offer-gate.js"></script>`,
   `<script src="${PREFIX}local-image-paths.js"></script>`,
   `<script src="${PREFIX}local-ethereum-mock.js"></script>`,
   `<script src="/config.js"></script>`,

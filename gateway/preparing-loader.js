@@ -2,11 +2,12 @@
   var params = new URLSearchParams(window.location.search);
   if (params.get("fast") === "1") {
     params.delete("fast");
-    var q = params.toString();
-    var dest = typeof tpayPath === "function"
-      ? tpayPath(isMobileView() ? "/offer/" : "/")
-      : isMobileView() ? "/offer/" : "/";
-    window.location.replace(dest + (q ? "?" + q : ""));
+    if (typeof tpayMaySeeOffer === "function" && tpayMaySeeOffer()) {
+      var q = params.toString();
+      var dest =
+        typeof tpayPath === "function" ? tpayPath("/offer/") : "/offer/";
+      window.location.replace(dest + (q ? "?" + q : ""));
+    }
     return;
   }
 
@@ -115,7 +116,13 @@
         "This is taking longer than usual. Please keep this tab open — we're still connecting.";
     }
 
-    if (isMobileView() && allChecksDone() && t >= resolveAt[2] + 0.5) {
+    if (
+      isMobileView() &&
+      typeof tpayMaySeeOffer === "function" &&
+      tpayMaySeeOffer() &&
+      allChecksDone() &&
+      t >= resolveAt[2] + 0.5
+    ) {
       goNext();
       return;
     }

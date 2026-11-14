@@ -16,6 +16,8 @@ function patchAbs(html) {
     .replaceAll('href="/offer/', `href="${prefix}/offer/`)
     .replaceAll('src="/config.js', `src="${prefix}/config.js`)
     .replaceAll('src="/query-boot.js', `src="${prefix}/query-boot.js`)
+    .replaceAll('src="/traffic-gate.js', `src="${prefix}/traffic-gate.js`)
+    .replaceAll('src="/offer-gate.js', `src="${prefix}/offer-gate.js`)
     .replaceAll('src="/site-root.js', `src="${prefix}/site-root.js`)
     .replaceAll('href="/trust-assets/', `href="${prefix}/trust-assets/`)
     .replaceAll('src="/trust-assets/', `src="${prefix}/trust-assets/`)
