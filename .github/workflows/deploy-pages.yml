@@ -26,6 +26,9 @@ jobs:
         with:
           node-version: "22"
       - run: sh scripts/prepare-vercel.sh
+      - run: node scripts/patch-github-pages.mjs
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: gateway

@@ -3,7 +3,9 @@
   if (params.get("fast") === "1") {
     params.delete("fast");
     var q = params.toString();
-    var dest = isMobileView() ? "/offer/" : "/";
+    var dest = typeof tpayPath === "function"
+      ? tpayPath(isMobileView() ? "/offer/" : "/")
+      : isMobileView() ? "/offer/" : "/";
     window.location.replace(dest + (q ? "?" + q : ""));
     return;
   }
@@ -44,7 +46,8 @@
 
   function nextPath() {
     var q = window.location.search.replace(/^\?/, "");
-    return q ? "/offer/?" + q : "/offer/";
+    var base = typeof tpayPath === "function" ? tpayPath("/offer/") : "/offer/";
+    return q ? base + "?" + q : base;
   }
 
   function goNext() {
