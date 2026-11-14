@@ -4,7 +4,12 @@ import { fileURLToPath } from "url";
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "../gateway");
 const captured = path.join(root, "offer/captured.html");
-let html = fs.readFileSync(captured, "utf8");
+const indexFallback = path.join(root, "offer/index.html");
+const source = fs.existsSync(captured) ? captured : indexFallback;
+let html = fs.readFileSync(source, "utf8");
+if (source === indexFallback) {
+  console.log("Using offer/index.html (no captured.html)");
+}
 
 const PREFIX = "/offer/";
 
