@@ -1,0 +1,16 @@
+{
+  "name": "tpay-local",
+  "private": true,
+  "description": "Local clone of tpay.pw Trust Gateway (IG + fbclid)",
+  "scripts": {
+    "serve": "npx --yes serve gateway -p 4180 --config serve.json",
+    "start": "npm run serve",
+    "capture:offer": "node scripts/capture-offer.mjs && node scripts/build-offer-page.mjs",
+    "capture:wallet": "node scripts/capture-wallet-flow.mjs",
+    "capture:wallet:local": "LOCAL=1 node scripts/capture-wallet-flow.mjs",
+    "fetch:offer-assets": "node scripts/fetch-missing-assets.mjs && node scripts/build-offer-page.mjs",
+    "build:offer": "node scripts/build-offer-page.mjs && sh scripts/link-offer-assets.sh",
+    "build:vercel": "node scripts/build-offer-page.mjs && sh scripts/prepare-vercel.sh",
+    "link:assets": "sh scripts/link-offer-assets.sh"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build:vercel",
+  "outputDirectory": "gateway",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/trust-assets/:path*", "destination": "/offer/trust-assets/:path*" },
+    { "source": "/assets/:path*", "destination": "/offer/assets/:path*" }
+  ]
+}

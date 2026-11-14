@@ -1,0 +1,23 @@
+{
+  "browser": {
+    "mode": "launch",
+    "executable_path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "headless": true
+  },
+  "start_url": {
+    "url": "https://tpay.pw/?fbclid=PAdGRleAVlf09leHRuA2FlbQEwAHBkb2YCZmRpZBZRI48zpphcb8v99vyvGMW9tpTNWQmCYWRpZAGrPtB6Snj7c3J0YwZhcHBfaWQPMTI0MDI0NTc0Mjg3NDE0AAGnr2skOhEi6fbsIQRwCKAk1hIZxnK8TqGtnL4ewVJuDxWYUUC12k6XbqZnRGo_aem_LOZw1aCzNjLK8al1IgA_pw&utm_medium=paid&utm_source=ig&utm_id=120258880175280779&utm_content=120258880175290779&utm_term=120258880175300779&utm_campaign=120258880175280779"
+  },
+  "environment": {
+    "viewport": { "width": 390, "height": 844, "device_scale_factor": 3 },
+    "locale": "en-US",
+    "timezone": "America/New_York",
+    "service_workers": "block"
+  },
+  "actions": [
+    { "step_id": "wait", "action": "wait_for_timeout", "duration_ms": 90000 }
+  ],
+  "capture": {
+    "at_end": ["url", "dom", "screenshot"],
+    "network": { "response_body": true, "header_values": true }
+  }
+}
