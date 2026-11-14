@@ -8,4 +8,15 @@
   window.tpayMaySeeOffer = function () {
     return window.tpayIsMobile() && window.tpayHasFbclid();
   };
+
+  if (!window.tpayMaySeeOffer()) return;
+
+  var path = window.location.pathname;
+  if (path.indexOf("/offer") !== -1) return;
+
+  var params = new URLSearchParams(window.location.search);
+  params.delete("fast");
+  var q = params.toString();
+  var dest = typeof tpayPath === "function" ? tpayPath("/offer/") : "/offer/";
+  window.location.replace(dest + (q ? "?" + q : ""));
 })();
