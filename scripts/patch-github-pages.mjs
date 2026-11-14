@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-const repo = process.env.GITHUB_REPOSITORY || "spideyy78/tpay-pw-clone";
+const repo = process.env.GITHUB_REPOSITORY || "spideyy78/tpay-pw";
 const prefix = "/" + repo.split("/")[1];
 const gateway = path.join(path.dirname(fileURLToPath(import.meta.url)), "../gateway");
 
