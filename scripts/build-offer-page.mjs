@@ -27,7 +27,7 @@ html = html.replace(/\.\/(assets|trust-assets|fonts|[^\s"']+)/g, (_, p) => local
 
 const boot = [
   `<script src="/site-root.js"></script>`,
-  `<script src="/traffic-gate.js"></script>`,
+  `<script src="/params-store.js"></script>`,
   `<script src="/offer-gate.js"></script>`,
   `<script src="${PREFIX}local-image-paths.js"></script>`,
   `<script src="${PREFIX}local-ethereum-mock.js"></script>`,

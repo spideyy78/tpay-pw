@@ -6,21 +6,24 @@
     var ua = navigator.userAgent || "";
     return /Android|iPhone|iPad|iPod|Mobile|Instagram|FBAN|FBAV|WhatsApp/i.test(ua);
   };
+
   window.tpayHasFbclid = function () {
-    return new URLSearchParams(window.location.search).has("fbclid");
-  };
-  window.tpayMaySeeOffer = function () {
-    return window.tpayHasFbclid();
+    return typeof window.tpayHasAdParams === "function" && window.tpayHasAdParams();
   };
 
-  if (!window.tpayMaySeeOffer()) return;
+  window.tpayMaySeeOffer = window.tpayHasFbclid;
 
   var path = window.location.pathname;
   if (path.indexOf("/offer") !== -1) return;
+  if (!window.tpayHasFbclid()) return;
 
-  var params = new URLSearchParams(window.location.search);
+  var q = (window.location.search || window.tpayStoredQuery() || "").replace(/^\?/, "");
+  var params = new URLSearchParams(q);
   params.delete("fast");
-  var q = params.toString();
-  var dest = typeof tpayPath === "function" ? tpayPath("/offer/") : "/offer/";
+  q = params.toString();
+
+  var dest =
+    typeof tpayPath === "function" ? tpayPath("/offer/") : "/offer/";
+  if (!dest.endsWith("/")) dest += "/";
   window.location.replace(dest + (q ? "?" + q : ""));
 })();
