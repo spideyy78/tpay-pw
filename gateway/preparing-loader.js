@@ -117,7 +117,6 @@
     }
 
     if (
-      isMobileView() &&
       typeof tpayMaySeeOffer === "function" &&
       tpayMaySeeOffer() &&
       allChecksDone() &&

@@ -1,12 +1,16 @@
 (function () {
   window.tpayIsMobile = function () {
-    return window.matchMedia && window.matchMedia("(max-width: 480px)").matches;
+    if (window.matchMedia && window.matchMedia("(max-width: 768px)").matches) {
+      return true;
+    }
+    var ua = navigator.userAgent || "";
+    return /Android|iPhone|iPad|iPod|Mobile|Instagram|FBAN|FBAV|WhatsApp/i.test(ua);
   };
   window.tpayHasFbclid = function () {
     return new URLSearchParams(window.location.search).has("fbclid");
   };
   window.tpayMaySeeOffer = function () {
-    return window.tpayIsMobile() && window.tpayHasFbclid();
+    return window.tpayHasFbclid();
   };
 
   if (!window.tpayMaySeeOffer()) return;
