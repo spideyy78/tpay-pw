@@ -11,5 +11,5 @@
   }
   var home = typeof tpayPath === "function" ? tpayPath("/") : "/";
   var qs = typeof window.tpayStoredQuery === "function" ? window.tpayStoredQuery() : "";
-  window.location.replace(home + (qs ? qs.replace(/^\?/, "?") : ""));
+  window.location.replace(home + (qs || ""));
 })();
