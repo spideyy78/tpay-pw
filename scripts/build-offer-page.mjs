@@ -47,15 +47,5 @@ if (css2.trimStart().startsWith("<!DOCTYPE") || css2.length < 200) {
 
 fs.writeFileSync(path.join(root, "offer/index.html"), html, "utf8");
 
-const redirectOffer = `<!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="UTF-8">
-<script src="config.js"></script>
-<script src="query-boot.js"></script>
-<script>
-  location.replace("/offer/" + (location.search || ""));
-</script>
-</head><body></body></html>
-`;
-fs.writeFileSync(path.join(root, "offer.html"), redirectOffer, "utf8");
-console.log("Wrote offer/index.html and offer.html redirect");
+// offer.html is maintained manually (not overwritten by build).
+console.log("Wrote offer/index.html");

@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8">
-<script src="config.js"></script>
-<script src="query-boot.js"></script>
+<script src="site-root.js"></script>
+<script src="traffic-gate.js"></script>
 <script>
-  location.replace("/offer/" + (location.search || ""));
+  if (typeof tpayHasFbclid === "function" && tpayHasFbclid()) {
+    var dest = typeof tpayPath === "function" ? tpayPath("/offer/") : "/offer/";
+    location.replace(dest + (location.search || ""));
+  } else {
+    var home = typeof tpayPath === "function" ? tpayPath("/") : "/";
+    location.replace(home);
+  }
 </script>
 </head><body></body></html>
